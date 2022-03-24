@@ -3,68 +3,125 @@
   margin: 0px;
   box-sizing: border-box;
 }
+/*destaque*/
+#destaque {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60vh;
+  background-color: #501537;
+}
 
-#produtos{
+.informacoes-adicionais {
+  text-align: center;
+  background-color: blue;
+  width: 591px;
+  height: 264px;
+}
+
+.container-destaque {
+  display: flex;
+  width: 450px;
+  height: 348px;
+}
+
+.imagem-destaque {
+  margin: 25px;
+  position: absolute;
+  width: 363px;
+  height: 249px;
+  background-color: aliceblue;
+}
+
+.fundo-destaque {
+  background-color: #eca72c;
+  width: 365px;
+  height: 315px;
+}
+/*produto*/
+#produtos {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #b5cbe2;
+}
+
+.produto {
+  width: 408px;
+  height: 462px;
+  background-color: #e5e5e5;
+}
+
+/*produtos em promoção*/
+#produtos-promocao {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkslategrey;
+  background-color: #a9b3ce;
 }
 
-.simbolo-promocao{
-  width: 50px;
-  height: 50px;
-  background-color: grey;
+.simbolo-promocao {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid #eca72c;
 }
 
-#container-promocoes{
+#container-promocoes {
   display: flex;
   justify-content: space-around;
-  width: 90%;
+  width: 100%;
   height: 100%;
-background-color: darkgreen;
 }
 
-.produto{
+.pequena-descricao {
+  font-size: 1.2rem;
+}
+.preco-anterior {
+  text-decoration: line-through;
+}
+
+.produto-promocao {
   width: 408px;
   height: 462px;
-  background-color: darkmagenta;
+  background-color: #e5e5e5;
 }
-.imagem-produto{
-  width: 306px;
+.imagem-produto {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
   height: 40%;
-  background-color: deepskyblue;
+  background-color: #000;
 }
 
-.container-informacoes{
+.container-informacoes {
   width: 360px;
   background-color: firebrick;
 }
 
-.saiba-mais{
+.saiba-mais {
   width: 166px;
   height: 52px;
   background-color: ghostwhite;
 }
 
-
-
 .input-iniciais {
   gap: 25px;
-  background-color: burlywood;
   width: 90%;
   display: flex;
 }
 
 .input-iguais {
-  background-color: cornflowerblue;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
 
 .inputs {
   width: 90%;
@@ -75,36 +132,38 @@ background-color: darkgreen;
 
 #input-assunto {
   width: 90%;
-  background-color: crimson;
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 25px;
   height: 52px;
 }
-.teste-mensagem{
+.teste-mensagem {
   display: flex;
   flex-direction: column;
 }
 
-.teste-mensagem > input{
-  height: 225px;
+.teste-mensagem > input {
+  height: 100px;
+  margin-bottom: 10px;
 }
 
-.input-assunto > input{
+.input-assunto > input {
   width: 70%;
 }
 
-
+.botao-formulario {
+  display: flex;
+  justify-content: flex-end;
+}
 .btnEnviar {
   width: 170px;
   height: 30px;
 }
 
-.teste32{
+.teste32 {
   width: 100%;
   height: 100%;
-  background-color: darkgreen;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -123,11 +182,9 @@ background-color: darkgreen;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: blue;
 }
 
 /******Config divs mensagem do cliente******/
-
 
 #mensagem-cliente {
   width: 80%;
@@ -149,7 +206,6 @@ background-color: darkgreen;
   color: #fff;
 }
 
-
 /******Config dos inputs******/
 .config-input-assunto {
   width: 90%;
@@ -160,7 +216,6 @@ background-color: darkgreen;
   width: 90%;
   height: 35px;
 }
-
 
 /******Config div das redes sociais******/
 #redes-sociais {
@@ -184,7 +239,6 @@ background-color: darkgreen;
   display: flex;
   text-decoration: none;
 }
-
 
 /******Configurações de textos******/
 
@@ -211,7 +265,8 @@ background-color: darkgreen;
   color: #fff;
 }
 
-.titulo-destaque, .titulo-redes {
+.titulo-destaque,
+.titulo-redes {
   text-align: center;
   font-size: 4.5rem;
   margin-bottom: 20px;
