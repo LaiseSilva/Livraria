@@ -1,0 +1,31 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+#login{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100vw;
+   height: 100vh;
+   background-image: url(../img/backgound.png);
+   background-color: #0008;
+   background-blend-mode: darken;
+}
+
+.fundo-amarelo{
+   margin-right: 5%;
+   margin-bottom: 5%;
+   width: 50%;
+   height: 50%;
+   background-color: #ECA72C;
+}
+
+.formulario{
+   position: absolute;
+   width: 50%;
+   height: 50%;
+   background-color: #501537;
+}

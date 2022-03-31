@@ -3,245 +3,50 @@
   margin: 0px;
   box-sizing: border-box;
 }
-/*destaque*/
-#destaque {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 60vh;
-  background-color: #501537;
-}
-
-.informacoes-adicionais {
-  text-align: center;
-  background-color: blue;
-  width: 591px;
-  height: 264px;
-}
-
-.container-destaque {
-  display: flex;
-  width: 450px;
-  height: 348px;
-}
-
-.imagem-destaque {
-  margin: 25px;
-  position: absolute;
-  width: 363px;
-  height: 249px;
-  background-color: aliceblue;
-}
-
-.fundo-destaque {
-  background-color: #eca72c;
-  width: 365px;
-  height: 315px;
-}
-
-.confira{
-  border-radius: 5px;
-  background-color: hotpink;
-}
-/*produto*/
-#produtos {
-  width: 100%;
-  min-height:100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #b5cbe2;
-}
-
-.produto {
-  width: 408px;
-  height: 462px;
-  background-color: #e5e5e5;
-}
-
-/*produtos em promoção*/
-#produtos-promocao {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #a9b3ce;
-}
-
-.simbolo-promocao {
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-top: 25px solid #eca72c;
-}
-
-#container-promocoes {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 70%;
-  height: 100%;
-}
 
 .pequena-descricao {
+  margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
+}
+
+.preco {
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
 }
 .preco-anterior {
   text-decoration: line-through;
 }
 
-.produto-promocao {
-  width: 408px;
-  height: 462px;
-  background-color: #e5e5e5;
-}
-.imagem-produto {
-  display: flex;
-  justify-content: flex-end;
-  width: 80%;
-  height: 40%;
-  background-color: #000;
-}
-
 .container-informacoes {
-  width: 360px;
-  background-color: firebrick;
+  margin-top: 5px;
+  width: 80%;
+  height: 35%;
 }
 
 .saiba-mais {
-  width: 166px;
-  height: 52px;
-  background-color: ghostwhite;
-}
-
-.input-iniciais {
-  gap: 25px;
-  width: 90%;
-  display: flex;
-}
-
-.input-iguais {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.inputs {
-  width: 90%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-}
-
-#input-assunto {
-  width: 90%;
-  display: flex;
-  justify-content: space-around;
-  gap: 25px;
-  height: 52px;
-}
-.teste-mensagem {
-  display: flex;
-  flex-direction: column;
-}
-
-.teste-mensagem > input {
-  height: 100px;
-  margin-bottom: 10px;
-}
-
-
-.botao-formulario {
-  display: flex;
-  justify-content: flex-end;
-}
-.btnEnviar {
-  width: 170px;
-  height: 30px;
-}
-
-.teste32 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-}
-#area-contato {
-  display: flex;
-  width: 100%;
-  height: 80vh;
-}
-
-/******Config formulario******/
-.formulario {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/******Config divs mensagem do cliente******/
-
-#mensagem-cliente {
-  width: 80%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #501537;
-}
-
-.header-area-contato {
-  width: 100%;
-  height: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  color: #fff;
-}
-
-/******Config dos inputs******/
-
-.config-input {
-  margin-bottom: 30px;
-  width: 100%;
-  height: 35px;
-}
-
-/******Config div das redes sociais******/
-#redes-sociais {
-  width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
-  flex-direction: column;
-  background-color: #eca72c;
+  margin-top: 10px;
+  margin-left: 30%;
+  width: 50%;
+  height: 8%;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: all 1s;
 }
 
-.icones {
-  display: flex;
-  flex-direction: column;
-  margin-right: 50px;
-  margin-bottom: 15px;
-  width: 100px;
-  height: 100px;
-}
-
-.link-icone {
-  display: flex;
-  text-decoration: none;
+.saiba-mais:hover {
+  cursor: pointer;
+  background-color: #9e788f;
 }
 
 /******Configurações de textos******/
+.descricao {
+  font-size: 1.5rem;
+}
 
 .titulo {
   font-family: 'Roboto', sans-serif;
