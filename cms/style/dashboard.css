@@ -68,5 +68,11 @@
 .tamanho-icon{
    font-size: 50px !important;
 }
+
+.teste-excluir{
+   width: 30px;
+   height: 30px;
+   background-color: hotpink;
+}
  
 
