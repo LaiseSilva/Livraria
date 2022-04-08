@@ -2,8 +2,8 @@
 /*******************************************************************************
  * Objetivo: Arquivo de rota que irá segmentar as ações encaminhadas pela view
  * Autor: Laise
- * Data: 07/04/2022
- * Versão: 1.0
+ * Data: 07/04/2022   08/04/2022
+ * Versão: 1.0        2.0
 ********************************************************************************/
 
 //Váriaveis que diz qual é a ação e quem pediu
@@ -46,9 +46,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                     }
                 }
             }
-
+            break;
+        case 'GENEROS':
+            require_once('controller/controllerGeneros.php');
             
-
     }
 }
 

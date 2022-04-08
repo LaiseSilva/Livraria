@@ -88,10 +88,10 @@
 
     </div>
 
-    <a href="router.php?component=contatos&action=deletar&id=<?=$item['id']?>">
+    <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?=$item['id']?>">
             <div class="teste-excluir">
             </div>
-        </a>
+    </a>
 
     <?php
             }

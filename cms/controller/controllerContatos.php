@@ -16,7 +16,7 @@
       if(!empty($dados))
         return $dados;
       else
-        return $false;
+        return false;
  }
 
  function excluirContato($id)

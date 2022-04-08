@@ -1,11 +1,11 @@
 <?php
 
-/**************************************************************
- * Objetivo: Arquivo que irá manipular os dados dentro do banco
+/***************************************************************************
+ * Objetivo: Arquivo que irá manipular os dados de contatos dentro do banco
  * Autor: Laise
  * Data: 07/04/2022
  * Versão: 1.0
-***************************************************************/
+****************************************************************************/
 
 //pegando arquivo que estabelece a conexão com Banco
 require_once('conexaoMysql.php');
@@ -53,7 +53,7 @@ function deleteContato($id)
 
     $conexao = conexaoMysql();
 
-    $sql = "delete from tblcontatos where id".$id;
+    $sql = "delete from tblcontatos where id=".$id;
 
     if(mysqli_query($conexao,$sql))
     {
