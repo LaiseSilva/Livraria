@@ -49,7 +49,7 @@ function deleteContato($id)
 
     $conexao = conexaoMysql();
 
-    $sql = "delete from tblcontatos where id=" . $id;
+    $sql = "delete from tblcontatos where idcontato=" . $id;
 
     if (mysqli_query($conexao, $sql)) {
         if (mysqli_affected_rows($conexao))

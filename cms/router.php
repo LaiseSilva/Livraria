@@ -49,6 +49,51 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
             break;
         case 'GENEROS':
             require_once('controller/controllerGeneros.php');
+
+            
+            if($action == 'INSERIR')
+            {
+                
+                $resultado = inserirGenero($_POST);
+
+                if(is_bool($resultado))
+                {
+                    if($resultado)
+                        echo("<script>
+                                    alert('Registro inserido com sucesso!');
+                                    window.location.href = 'dashboardGeneros.php';
+                              </script>");
+                }elseif(is_array($resultado))
+                    echo("<script>
+                                alert('".$resultado['message']."');
+                                window.history.back();                   
+                         </script>");
+            }
+            
+            if($action == 'DELETAR')
+            {
+                $idGenero = $_GET['id'];
+                $resposta = excluirGenero($idGenero);
+
+                if(is_bool($resposta))
+                {
+                    if($resposta)
+                    {
+                        echo("<script>
+                                alert('Registro excluído com sucesso!');
+                                window.location.href = 'dashboardGeneros.php';
+                            </script>");
+                    }elseif(is_array($resposta))
+                    {
+                        echo("<script>
+                                    alert('".$resposta['message']."');
+                                    window.history.back();
+                            </script>");
+                    }
+
+                }
+
+            }
             
     }
 }

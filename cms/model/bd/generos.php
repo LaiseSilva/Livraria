@@ -39,6 +39,48 @@ function selectAllContatos()
 
 }
 
+function deleteGenero($id)
+{
+    $statusResposta = (bool) false;
+
+    $conexao = conexaoMysql();
+
+    $sql = "delete from tblgeneros where idgenero=".$id;
+
+    if(mysqli_query($conexao,$sql)){
+        if(mysqli_affected_rows($conexao))
+            $statusResposta = true;
+    }
+
+    fecharConexaoMysql($conexao);
+    return $statusResposta;
+}
+
+function insertGenero($dadosGenero)
+{
+    $statusResposta = (bool) false;
+
+    $conexao = conexaoMysql();
+
+    $sql = "insert into tblgeneros(nome) 
+                        values('".$dadosGenero['nome']."')";
+    
+
+    if(mysqli_query($conexao,$sql))
+    {
+        if(mysqli_affected_rows($conexao))
+            $statusResposta = true;
+    }
+
+    fecharConexaoMysql($conexao);
+
+    return $statusResposta;
+}
+
+function uptadeGenero()
+{
+    
+}
 
 
 

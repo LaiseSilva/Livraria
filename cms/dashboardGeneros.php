@@ -77,9 +77,9 @@
 
     <div id="container-formulario">
         <h1>Cadastrar Categorias</h1>
-        <form class="formulario">
+        <form action="router.php?component=generos&action=inserir" class="formulario" method="post">
             <div>
-                <input class="input" type="text" name="txtNome" value="" placeholder="Digite a nova categoria">
+                <input class="input" type="text" name="nome" value="" placeholder="Digite a nova categoria">
             </div>
             <div class="btnEnviar">
                 <input class="input-botao" type="submit" name="btnEnviar" value="Salvar">
@@ -99,27 +99,36 @@
                 <th class="tblColunas">Nome</th>
             </tr>
 
-            <tr class="tblLinhas">
-                <td class="tblRegistro tblColunas"></td>
-                <td class="tblColunas">
-                    <a>
-                        <img class="icone-excluir" src="./img/excluir.png" alt="">
-                    </a>
-                </td>
 
-                <td class="tblColunas">
-                    <a>
-                        <img class="icone-visualizar" src="./img/visualizador.png" alt="">
-                    </a>
-                </td>
+            <?php
+                require_once('controller/controllerGeneros.php');
+                $listGeneros = listarGeneros();
 
-                <td class="tblColunas">
-                    <a>
-                        <img class="icone-editar" src="./img/editar.png" alt="">
-                    </a>
-                </td>
+                foreach ($listGeneros as $item) {
+            ?>
 
-            </tr>
+
+                <tr class="tblLinhas">
+                    <td class="tblRegistro tblColunas"><?=$item['nome'];?></td>
+                    <td class="tblColunas">
+                        <a onclick="return confirm('Deseja realmente excluir essa categoria?');" href="router.php?component=generos&action=deletar&id=<?=$item['id']?>">
+                            <img class="icone-excluir" src="./img/excluir.png" alt="">
+                        </a>
+                    </td>
+
+                    <td class="tblColunas">
+                        <a>
+                            <img class="icone-editar" src="./img/editar.png" alt="">
+                        </a>
+                    </td>
+
+                </tr>
+
+            <?php
+            }
+            ?>
+
+
     </div>
 
 
