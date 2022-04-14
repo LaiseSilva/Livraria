@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/dashboard.css">
+    <link rel="stylesheet" href="./style/tabelas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -74,30 +75,55 @@
         </div>
     </nav>
 
-    <?php
-        require_once('controller/controllerContatos.php');
-        $listContato = listarContatos();
+    <div id="consultaDeMensagens">
+        <table class="tblConsulta">
+            <tr class="tblTitulo">
+                <td class="tblTitulo">
+                    <h1>Mensagens Clientes</h1>
+                </td>
+            </tr>
 
-        foreach($listContato as $item)
-        {
-    ?>
-    <div>
-        <p><?=$item['nome']?></p>
-        <p><?=$item['email']?></p>
-        <p><?=$item['mensagem']?></p>
+            <tr class="tblLinhas">
+                <th class="tblColunas">Nome</th>
+                <th class="tblColunas">Assunto</th>
+            </tr>
+
+            <?php
+            require_once('controller/controllerContatos.php');
+            $listContato = listarContatos();
+
+            foreach ($listContato as $item) {
+
+            ?>
+
+                <tr class="tblLinhas">
+                    <td class="tblRegistro tblColunas"><?= $item['nome'] ?></td>
+                    <td class="tblColunas"><?= $item['assunto'] ?></td>
+                    <td class="tblColunas">
+                        <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?= $item['id'] ?>">
+                            <img class="icone-excluir" src="./img/excluir.png" alt="">
+                        </a>
+                    </td>
+
+                    <td class="tblColunas">
+                        <a>
+                            <img class="icone-visualizar" src="./img/visualizador.png" alt="">
+                        </a>
+                    </td>
+                </tr>
+
+
+
+
+            <?php
+            }
+            ?>
+
+
+        </table>
 
     </div>
 
-    <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?=$item['id']?>">
-            <div class="teste-excluir">
-            </div>
-    </a>
-
-    <?php
-            }
-    ?>
-
-    
 </body>
 
 </html>

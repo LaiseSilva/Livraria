@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/dashboard.css">
+    <link rel="stylesheet" href="./style/tabelas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -74,9 +75,53 @@
         </div>
     </nav>
 
-    <section id="section">
-        <span>Titulo da sessão</span>
-    </section>
+    <div id="container-formulario">
+        <h1>Cadastrar Categorias</h1>
+        <form class="formulario">
+            <div>
+                <input class="input" type="text" name="txtNome" value="" placeholder="Digite a nova categoria">
+            </div>
+            <div class="btnEnviar">
+                <input class="input-botao" type="submit" name="btnEnviar" value="Salvar">
+            </div>
+        </form>
+    </div>
+
+    <div id="consultaDeMensagens">
+        <table class="tblConsulta">
+            <tr class="tblTitulo">
+                <td class="tblTitulo">
+                    <h1>Generos</h1>
+                </td>
+            </tr>
+
+            <tr class="tblLinhas">
+                <th class="tblColunas">Nome</th>
+            </tr>
+
+            <tr class="tblLinhas">
+                <td class="tblRegistro tblColunas"></td>
+                <td class="tblColunas">
+                    <a>
+                        <img class="icone-excluir" src="./img/excluir.png" alt="">
+                    </a>
+                </td>
+
+                <td class="tblColunas">
+                    <a>
+                        <img class="icone-visualizar" src="./img/visualizador.png" alt="">
+                    </a>
+                </td>
+
+                <td class="tblColunas">
+                    <a>
+                        <img class="icone-editar" src="./img/editar.png" alt="">
+                    </a>
+                </td>
+
+            </tr>
+    </div>
+
 
     <footer id="footer">
 

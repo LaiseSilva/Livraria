@@ -6,7 +6,7 @@
 
 #header{
    height: 20vh;
-   width: 100vw;
+   width: 100%;
    display: flex;
    align-items: center;
    justify-content: space-evenly;
@@ -40,7 +40,7 @@
    justify-content: space-around;
    align-items: center;
    height: 30vh;
-   width: 100vw;
+   width: 100%;
    background-color: #c4c4c4;
 }
 
@@ -69,10 +69,31 @@
    font-size: 50px !important;
 }
 
-.teste-excluir{
-   width: 30px;
-   height: 30px;
-   background-color: hotpink;
+#container-formulario{
+   width: 100%;
+   height: 29vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: aqua;
 }
- 
+
+.formulario{
+   width: 80%;
+   height: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  
+}
+
+.input{
+   height: 30px;
+   width: 90%;
+}
+
+.input-botao{
+   height: 30px;
+   width: 70px;
+}
 
