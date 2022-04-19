@@ -70,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                          </script>");
             }
             
-            if($action == 'DELETAR')
+            elseif($action == 'DELETAR')
             {
                 $idGenero = $_GET['id'];
                 $resposta = excluirGenero($idGenero);
@@ -93,6 +93,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
 
                 }
 
+            }
+
+            elseif($action == 'BUSCAR')
+            {
+                $idGenero = $_GET['id'];
+
+                $dados = buscarGenero($idGenero);
+
+                session_start();
+
+                $_SESSION['dadosGeneros'] = $dados;
+
+                require_once('dashboardGeneros.php');
+            }
+
+            elseif($action == 'EDITAR')
+            {
+                $idGenero = $_GET['id'];
+
+                $resultado = atualizarGenero($_POST, $idGenero);
+
+                if(is_bool($resultado))
+                {
+                    if ($resultado)
+                        echo("<script>
+                                    alert('Registro atualizado com sucesso!');
+                                    window.location.href = 'dashboardGeneros.php';                        
+                              </script>");
+                }elseif(is_array($resultado))
+                {
+                    echo("<script>
+                                    alert('".$resultado["message"]."');
+                                    window.history.back();                        
+                              </script>");
+                }
             }
             
     }

@@ -64,4 +64,51 @@ function excluirGenero($id)
         );
 }
 
+function atualizarGenero($dadosGeneros, $id)
+{
+    if(!empty($dadosGeneros))
+    {
+        if(!empty($dadosGeneros['txtNome']))
+        {
+            if(!empty($id) && !is_numeric($id) && $id!=0)
+            {
+                $dados = array(
+                    'nome' => $dadosGeneros['txNome']
+                );
+    
+                require_once('model/bd/generos.php');
+    
+                if(uptadeGenero($dados))
+                    return true;
+                else 
+                    return array('idErro' => 3,
+                                 'message' => 'Não foi possível atualizar o genero no Banco de dados');
+            }else
+                return array('idErro' => 3,
+                             'message' => 'Não é possível atualizar o genero sem um id válido');
+        }else 
+            return array('idErro'  => 2,
+                         'message' => 'O campo obrigatório não foi preenchido!');
+
+    }
+}
+
+function buscarGenero($id){
+    if ($id !=0 && !empty($id) && is_numeric($id))
+    {
+        require_once('model/bd/generos.php');
+
+        $dados = selectByIdGenero($id);
+
+        if(!empty($dados))
+            return $dados;
+        else
+            return false;
+    }else
+        return array ('idErro'  => 4,
+                      'message' => 'Não é possível buscar um registro sem um id válido');
+}
+
+
+
 ?>

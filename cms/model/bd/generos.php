@@ -77,11 +77,47 @@ function insertGenero($dadosGenero)
     return $statusResposta;
 }
 
-function uptadeGenero()
+function uptadeGenero($dadosGeneros)
 {
-    
+    $statusResposta = (boolean) false;
+
+    $conexao = conexaoMysql();
+
+    $sql = "uptade tblgeneros set
+                    nome = '".$dadosGeneros['nome']."'
+                where idgenero=".$dadosGeneros['id'];
+
+    if(mysqli_query($conexao, $sql))
+    {
+        if(mysqli_affected_rows($conexao))
+            $statusResposta = true;
+    }
+
+    fecharConexaoMysql($conexao);
+    return $statusResposta;
 }
 
+function selectByIdGenero($id)
+{
+    $conexao = conexaoMysql();
 
+    $sql = "select * from tblgeneros where idgenero =".$id;
 
+    $result = mysqli_query($conexao, $sql);
+    
+    if($result)
+    {
+        if($rsDados = mysqli_fetch_assoc($result))
+        {
+            $arrayDados = array(
+                "id"    => $rsDados['idgenero'],
+                "nome"  => $rsDados['nome'],
+            );
+
+            fecharConexaoMysql($conexao);
+
+            return $arrayDados;
+        }
+    }
+}
 ?>

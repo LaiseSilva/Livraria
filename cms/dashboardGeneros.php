@@ -1,5 +1,27 @@
+<?php
+
+
+    $form = (string) "router.php?component=generos&action=inserir";
+
+    if(session_status())
+    {
+        if(!empty($_SESSION['dadosGeneros']))
+        {
+            $id    = $_SESSION['dadosGeneros']['id'];
+            $nome  = $_SESSION['dadosGeneros']['nome'];
+
+            $form = "router.php?component=generos&action=editar&id=".$id;
+
+            unset($_SESSION['dadosGeneros']);
+        }
+    }
+
+    echo($form);
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -77,7 +99,7 @@
 
     <div id="container-formulario">
         <h1>Cadastrar Categorias</h1>
-        <form action="router.php?component=generos&action=inserir" class="formulario" method="post">
+        <form action="<?=$form?>" class="formulario" method="post">
             <div>
                 <input class="input" type="text" name="nome" value="" placeholder="Digite a nova categoria">
             </div>
@@ -117,7 +139,7 @@
                     </td>
 
                     <td class="tblColunas">
-                        <a>
+                        <a href="router.php?component=generos&action=buscar&id=<?=$item['id']?>">
                             <img class="icone-editar" src="./img/editar.png" alt="">
                         </a>
                     </td>
