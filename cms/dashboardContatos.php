@@ -99,13 +99,13 @@
                 <tr class="tblLinhas">
                     <td class="tblRegistro tblColunas"><?= $item['nome'] ?></td>
                     <td class="tblColunas"><?= $item['assunto'] ?></td>
-                    <td class="tblColunas">
+                    <td class="tblopcoes">
                         <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?= $item['id'] ?>">
                             <img class="icone-excluir" src="./img/excluir.png" alt="">
                         </a>
                     </td>
 
-                    <td class="tblColunas">
+                    <td class="tblopcoes">
                         <a>
                             <img class="icone-visualizar" src="./img/visualizador.png" alt="">
                         </a>

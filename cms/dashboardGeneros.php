@@ -1,22 +1,19 @@
 <?php
 
 
-    $form = (string) "router.php?component=generos&action=inserir";
+$form = (string) "router.php?component=generos&action=inserir";
 
-    if(session_status())
-    {
-        if(!empty($_SESSION['dadosGeneros']))
-        {
-            $id    = $_SESSION['dadosGeneros']['id'];
-            $nome  = $_SESSION['dadosGeneros']['nome'];
+if (session_status()) {
+    if (!empty($_SESSION['dadosGeneros'])) {
 
-            $form = "router.php?component=generos&action=editar&id=".$id;
+        $id    = $_SESSION['dadosGeneros']['id'];
+        $nome  = $_SESSION['dadosGeneros']['nome'];
 
-            unset($_SESSION['dadosGeneros']);
-        }
+        $form = "router.php?component=generos&action=editar&id=" . $id;
+
+        unset($_SESSION['dadosGeneros']);
     }
-
-    echo($form);
+}
 ?>
 
 
@@ -99,9 +96,9 @@
 
     <div id="container-formulario">
         <h1>Cadastrar Categorias</h1>
-        <form action="<?=$form?>" class="formulario" method="post">
+        <form action="<?= $form ?>" class="formulario" method="post">
             <div>
-                <input class="input" type="text" name="nome" value="" placeholder="Digite a nova categoria">
+                <input class="input" type="text" name="txtNome" value="<?= @$nome ?>" placeholder="Digite a nova categoria">
             </div>
             <div class="btnEnviar">
                 <input class="input-botao" type="submit" name="btnEnviar" value="Salvar">
@@ -123,23 +120,23 @@
 
 
             <?php
-                require_once('controller/controllerGeneros.php');
-                $listGeneros = listarGeneros();
+            require_once('controller/controllerGeneros.php');
+            $listGeneros = listarGeneros();
 
-                foreach ($listGeneros as $item) {
+            foreach ($listGeneros as $item) {
             ?>
 
 
                 <tr class="tblLinhas">
-                    <td class="tblRegistro tblColunas"><?=$item['nome'];?></td>
-                    <td class="tblColunas">
-                        <a onclick="return confirm('Deseja realmente excluir essa categoria?');" href="router.php?component=generos&action=deletar&id=<?=$item['id']?>">
+                    <td class="tblRegistro tblColunas"><?= $item['nome']; ?></td>
+                    <td class="tblopcoes">
+                        <a onclick="return confirm('Deseja realmente excluir essa categoria?');" href="router.php?component=generos&action=deletar&id=<?= $item['id'] ?>">
                             <img class="icone-excluir" src="./img/excluir.png" alt="">
                         </a>
                     </td>
 
-                    <td class="tblColunas">
-                        <a href="router.php?component=generos&action=buscar&id=<?=$item['id']?>">
+                    <td class="tblopcoes">
+                        <a href="router.php?component=generos&action=buscar&id=<?= $item['id'] ?>">
                             <img class="icone-editar" src="./img/editar.png" alt="">
                         </a>
                     </td>

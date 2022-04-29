@@ -65,7 +65,7 @@
 
         <div class="usuario">
             <span>Bem vindo Laise</span>
-            <a href="" class="item-menu">
+            <a href="index.html" class="item-menu">
                 <i class="material-icons tamanho-icon">
                     logout
                 </i>

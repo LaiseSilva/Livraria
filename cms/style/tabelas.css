@@ -1,4 +1,4 @@
-#consultaDeMensagens{
+#consultaDeMensagens {
    display: flex;
    align-items: center;
    justify-content: center;
@@ -9,16 +9,22 @@
 
 
 
-.tblConsulta, .tblColunas, .tblLinhas, .tblResgistro{
+.tblConsulta,
+.tblColunas,
+.tblLinhas,
+.tblResgistro {
+   width: 100%;
    border: 2px solid black;
 }
 
-.tblColunas{
+.tblColunas {
    width: 50%;
    height: 20%;
 }
 
-.icone-excluir, .icone-visualizar, .icone-editar{
+.icone-excluir,
+.icone-visualizar,
+.icone-editar {
    margin-top: 5px;
    width: 40px;
    height: 40px;
