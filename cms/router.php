@@ -170,5 +170,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                 }
             }
             break;
+        case 'PRODUTOS':
+            if ($action == 'INSERIR') {
+            } elseif ($action == 'BUSCAR') {
+            } elseif ($action == 'DELETAR') {
+            } elseif ($action == 'EDITAR'){
+                
+            }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**************************************************************************
- * Objetivo: Arquivo que irá manipular os dados de generos dentro do banco
+ * Objetivo: Arquivo que irá manipular os dados de generos
  * Autor: Laise
  * Data: 08/04/2022
  * Versão: 1.0

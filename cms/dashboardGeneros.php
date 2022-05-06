@@ -107,7 +107,7 @@ if (session_status()) {
                         </div>
 
                         <div class="entradaDeDados">
-                            <input class="input" type="text" name="txtNome" value="<?= @$nome ?>" placeholder="Digite a nova categoria" maxlength="100">
+                            <input class="input" type="text" name="txtNome" value="<?=isset($nome)?$nome:null?>" placeholder="Digite a nova categoria" maxlength="100">
                         </div>
                     </div>
 

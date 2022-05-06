@@ -5,10 +5,17 @@
    border: solid 1px black;
    margin-left: auto;
    margin-right: auto;
-   margin-top: 60px;
+   margin-top: 90px;
    margin-bottom: 10px;
    box-shadow: 10px 10px 10px #cccccc;
 }
+
+/*.container-tr{
+   display: flex;
+   width: 10px;
+   height: 10px;
+   background-color: aqua;
+}*/
 
 #tblConsulta {
    width: 100%;
@@ -42,7 +49,7 @@
 
 
 .excluir,
-.pesquisar,
+.visualizar,
 .editar {
    width: 30px;
    height: 30px;
@@ -55,7 +62,7 @@
 
 .excluir:hover,
 .editar:hover,
-.pesquisar:hover {
+.visualizar:hover {
    transform: scale(1.3);
    transition: 1s;
 }
@@ -92,4 +99,9 @@
 
 .registros {
    background-color: #faf9f9;
+}
+
+.destaque{
+   width: 10px;
+   height: 10px;
 }

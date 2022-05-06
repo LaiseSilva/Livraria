@@ -24,11 +24,12 @@ if (session_status()) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style/dashboard.css">
    <link rel="stylesheet" href="./style/tabelas.css">
+   <link rel="stylesheet" href="./style/forms.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <title>Document</title>
+   <title>Usuários</title>
 </head>
 
 <body>
@@ -41,11 +42,10 @@ if (session_status()) {
       <div class="logo"></div>
    </header>
 
-   <nav id="nav">
-      <div class="navegacao">
-
-         <div class="container-item-menu">
-            <a href="" class="item-menu">
+   <div id="container">
+      <nav id="menu">
+         <div class="item-menu">
+            <a href="" class="item">
                <span class="material-icons tamanho-icon">
                   auto_stories
                </span>
@@ -53,8 +53,8 @@ if (session_status()) {
             </a>
          </div>
 
-         <div class="container-item-menu">
-            <a href="dashboardGeneros.php" class="item-menu">
+         <div class="item-menu">
+            <a href="dashboardGeneros.php" class="item">
                <span class="material-icons tamanho-icon">
                   category
                </span>
@@ -62,8 +62,8 @@ if (session_status()) {
             </a>
          </div>
 
-         <div class="container-item-menu">
-            <a href="dashboardContatos.php" class="item-menu">
+         <div class="item-menu">
+            <a href="dashboardContatos.php" class="item">
                <i class="material-icons tamanho-icon">
                   rate_review
                </i>
@@ -71,97 +71,126 @@ if (session_status()) {
             </a>
          </div>
 
-         <div class="container-item-menu">
-            <a href="dashboardUsuarios.php" class="item-menu">
+         <div class="item-menu">
+            <a href="dashboardUsuarios.php" class="item">
                <i class="material-icons tamanho-icon">
                   perm_identity
                </i>
                <p>Usuários</p>
             </a>
          </div>
-      </div>
 
-      <div class="usuario">
-         <span>Bem vindo Laise</span>
-         <a href="index.html" class="item-menu">
-            <i class="material-icons tamanho-icon">
-               logout
-            </i>
-            <p>Logout</p>
-         </a>
 
-      </div>
-   </nav>
+         <div class="item-menu">
+            <a href="index.html" class="item">
+               <i class="material-icons tamanho-icon">
+                  logout
+               </i>
+               <p>Logout</p>
+            </a>
 
-   <div id="container-formulario">
-      <h1>Cadastrar Usuários</h1>
-      <form action="<?= $form ?>" class="formulario" method="post">
-         <div>
-            <input class="input" type="text" name="nome" value="<?= @$nome ?>" placeholder="Digite o nome">
          </div>
-         <div>
-            <input class="input" type="text" name="email" value="<?= @$email ?>" placeholder="Digite o email">
+      </nav>
+
+      <section id="cadastro">
+         <div class="tituloCadastro">
+            <h1>Cadastro de Usuários</h1>
          </div>
-         <div>
-            <input class="input" type="text" name="senha" value="<?= @$senha ?>" placeholder="Digite a senha">
+
+         <div class="cadastroInformacoes">
+            <form action="<?= $form ?>" method="post">
+               <div class="campos">
+                  <div class="cadastroDados">
+                     <label>Nome: </label>
+                  </div>
+
+                  <div class="entradaDeDados">
+                     <input class="input" type="text" name="nome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite o nome" maxlength="100">
+                  </div>
+               </div>
+
+               <div class="campos">
+                  <div class="cadastroDados">
+                     <label>Email: </label>
+                  </div>
+
+                  <div class="entradaDeDados">
+                     <input class="input" type="email" name="email" value="<?= isset($email) ? $email : null ?>" placeholder="Digite o email" maxlength="100">
+                  </div>
+               </div>
+
+               <div class="campos">
+                  <div class="cadastroDados">
+                     <label>Senha: </label>
+                  </div>
+
+                  <div class="entradaDeDados">
+                     <input class="input" type="password" name="senha" value="<?= isset($senha) ? $senha : null ?>" placeholder="Digite a senha" maxlength="100">
+                  </div>
+               </div>
+
+               <div class="enviar">
+                  <input type="submit" name="btnEnviar" value="Salvar">
+               </div>
+            </form>
          </div>
-         <div class="btnEnviar">
-            <input class="input-botao" type="submit" name="btnEnviar" value="Salvar">
-         </div>
-      </form>
+
+         <section id="consultaDeDados">
+            <table id="tblConsulta">
+               <tr>
+                  <td id="tblTitulo" colspan="6">
+                     <h1>Consulta de Usuários</h1>
+                  </td>
+               </tr>
+
+               <div class="container-tr">
+                  <tr id="tblLinhas">
+                     <td class="tblColunas destaque"> Nome</td>
+                     <td class="tblColunas destaque"> Email</td>
+                     <td class="tblColunas destaque"> Ações</td>
+                  </tr>
+                
+               </div>
+
+
+               <?php
+               require_once('controller/controllerUsuarios.php');
+               $listUsuarios = listarUsuarios();
+
+               foreach ($listUsuarios as $item) {
+               ?>
+
+                  <tr id="tblLinhas">
+                     <td class="tblColunas registros"><?= $item['nome']; ?></td>
+
+                     <td class="tblColunas registros"><?= $item['email']; ?></td>
+
+                     <td class="tblColunas registros">
+                        <a onclick="return confirm('Deseja realmente excluir esse usuário?');" href="router.php?component=usuarios&action=deletar&id=<?= $item['id'] ?>">
+                           <img class="excluir" src="./img/excluir.png" alt="excluir">
+                        </a>
+
+                        <a href="router.php?component=usuarios&action=buscar&id=<?= $item['id'] ?>">
+                           <img class="editar" src="./img/editar.png" alt="editar">
+                        </a>
+
+                        <a>
+                           <img class="visualizar" src="./img/visualizador.png" alt="">
+                        </a>
+                     </td>
+                  </tr>
+                  
+
+               <?php
+               }
+               ?>
+         </section>
+
+      </section>
+
    </div>
 
-   <div id="consultaDeUsuarios">
-      <table class="tblConsulta">
-         <tr class="tblTitulo">
-            <td class="tblTitulo">
-               <h1>Usuários</h1>
-            </td>
-         </tr>
 
-         <tr class="tblLinhas">
-            <th class="tblColunas">Nome</th>
-            <th class="tblColunas">Email</th>
-         </tr>
-
-
-         <?php
-         require_once('controller/controllerUsuarios.php');
-         $listUsuarios = listarUsuarios();
-
-         foreach ($listUsuarios as $item) {
-         ?>
-
-
-            <tr class="tblLinhas">
-               <td class="tblRegistro tblColunas"><?= $item['nome']; ?></td>
-               <td class="tblRegistro tblColunas"><?= $item['email']; ?></td>
-               <td class="tblopcoes">
-                  <a onclick="return confirm('Deseja realmente excluir esse usuário?');" href="router.php?component=usuarios&action=deletar&id=<?= $item['id'] ?>">
-                     <img class="icone-excluir" src="./img/excluir.png" alt="">
-                  </a>
-               </td>
-
-               <td class="tblopcoes">
-                  <a href="router.php?component=usuarios&action=buscar&id=<?= $item['id'] ?>">
-                     <img class="icone-editar" src="./img/editar.png" alt="">
-                  </a>
-               </td>
-
-               <td class="tblopcoes">
-                  <a>
-                     <img class="icone-visualizar" src="./img/visualizador.png" alt="">
-                  </a>
-               </td>
-
-            </tr>
-
-         <?php
-         }
-         ?>
-
-
-   </div>
 
    </footer>
 </body>
