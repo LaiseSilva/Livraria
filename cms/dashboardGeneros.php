@@ -1,6 +1,4 @@
 <?php
-
-
 $form = (string) "router.php?component=generos&action=inserir";
 
 if (session_status()) {
@@ -25,6 +23,7 @@ if (session_status()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/dashboard.css">
     <link rel="stylesheet" href="./style/tabelas.css">
+    <link rel="stylesheet" href="./style/forms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -42,11 +41,12 @@ if (session_status()) {
         <div class="logo"></div>
     </header>
 
-    <nav id="nav">
-        <div class="navegacao">
+    <div id="container">
 
-            <div class="container-item-menu">
-                <a href="" class="item-menu">
+        <nav id="menu">
+
+            <div class="item-menu">
+                <a href="" class="item">
                     <span class="material-icons tamanho-icon">
                         auto_stories
                     </span>
@@ -54,8 +54,8 @@ if (session_status()) {
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardGeneros.php" class="item">
                     <span class="material-icons tamanho-icon">
                         category
                     </span>
@@ -63,8 +63,8 @@ if (session_status()) {
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="./dashboardContatos.php" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardContatos.php" class="item">
                     <i class="material-icons tamanho-icon">
                         rate_review
                     </i>
@@ -72,85 +72,96 @@ if (session_status()) {
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardUsuarios.php" class="item">
                     <i class="material-icons tamanho-icon">
                         perm_identity
                     </i>
                     <p>Usuários</p>
                 </a>
             </div>
-        </div>
 
-        <div class="usuario">
-            <span>Bem vindo Laise</span>
-            <a href="" class="item-menu">
-                <i class="material-icons tamanho-icon">
-                    logout
-                </i>
-                <p>Logout</p>
-            </a>
 
-        </div>
-    </nav>
+            <div class="item-menu">
+                <a href="index.html" class="item">
+                    <i class="material-icons tamanho-icon">
+                        logout
+                    </i>
+                    <p>Logout</p>
+                </a>
 
-    <div id="container-formulario">
-        <h1>Cadastrar Categorias</h1>
-        <form action="<?= $form ?>" class="formulario" method="post">
-            <div>
-                <input class="input" type="text" name="txtNome" value="<?= @$nome ?>" placeholder="Digite a nova categoria">
             </div>
-            <div class="btnEnviar">
-                <input class="input-botao" type="submit" name="btnEnviar" value="Salvar">
+        </nav>
+
+        <section id="cadastro">
+            <div class="tituloCadastro">
+                <h1>Cadastro de gêneros</h1>
             </div>
-        </form>
+
+            <div class="cadastroInformacoes">
+                <form action="<?= $form ?>" method="post">
+
+                    <div class="campos">
+                        <div class="cadastroDados">
+                            <label>Nome: </label>
+                        </div>
+
+                        <div class="entradaDeDados">
+                            <input class="input" type="text" name="txtNome" value="<?= @$nome ?>" placeholder="Digite a nova categoria" maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="enviar">
+                        <input type="submit" name="btnEnviar" value="Salvar">
+                    </div>
+
+                </form>
+            </div>
+
+
+            <section id="consultaDeDados">
+                <table id="tblConsulta">
+                    <tr>
+                        <td id="tblTitulo" colspan="6">
+                            <h1>Consulta de categorias</h1>
+                        </td>
+                    </tr>
+
+                    <tr id="tblLinhas">
+                        <td class="tblColunas destaque"> Nome</td>
+                    </tr>
+
+
+                    <?php
+                    require_once('controller/controllerGeneros.php');
+                    $listGeneros = listarGeneros();
+
+                    foreach ($listGeneros as $item) {
+                    ?>
+
+                        <tr id="tblLinhas">
+                            <td class="tblColunas registros"><?= $item['nome']; ?></td>
+
+
+                            <td class="tblColunas registros">
+                                <a onclick="return confirm('Deseja realmente excluir essa categoria?');" href="router.php?component=generos&action=deletar&id=<?= $item['id'] ?>">
+                                    <img class="excluir" src="./img/excluir.png" alt="excluir">
+                                </a>
+
+                                <a href="router.php?component=generos&action=buscar&id=<?= $item['id'] ?>">
+                                    <img class="editar" src="./img/editar.png" alt="editar">
+                                </a>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </section>
+        </section>
+
+
     </div>
-
-    <div id="consultaDeMensagens">
-        <table class="tblConsulta">
-            <tr class="tblTitulo">
-                <td class="tblTitulo">
-                    <h1>Generos</h1>
-                </td>
-            </tr>
-
-            <tr class="tblLinhas">
-                <th class="tblColunas">Nome</th>
-            </tr>
-
-
-            <?php
-            require_once('controller/controllerGeneros.php');
-            $listGeneros = listarGeneros();
-
-            foreach ($listGeneros as $item) {
-            ?>
-
-
-                <tr class="tblLinhas">
-                    <td class="tblRegistro tblColunas"><?= $item['nome']; ?></td>
-                    <td class="tblopcoes">
-                        <a onclick="return confirm('Deseja realmente excluir essa categoria?');" href="router.php?component=generos&action=deletar&id=<?= $item['id'] ?>">
-                            <img class="icone-excluir" src="./img/excluir.png" alt="">
-                        </a>
-                    </td>
-
-                    <td class="tblopcoes">
-                        <a href="router.php?component=generos&action=buscar&id=<?= $item['id'] ?>">
-                            <img class="icone-editar" src="./img/editar.png" alt="">
-                        </a>
-                    </td>
-
-                </tr>
-
-            <?php
-            }
-            ?>
-
-
-    </div>
-
-
     <footer id="footer">
 
     </footer>

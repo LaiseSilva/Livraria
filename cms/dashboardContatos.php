@@ -36,7 +36,7 @@
             </div>
 
             <div class="container-item-menu">
-                <a href="" class="item-menu">
+                <a href="dashboardGeneros.php" class="item-menu">
                     <span class="material-icons tamanho-icon">
                         category
                     </span>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="container-item-menu">
-                <a href="./dashboardContatos.php" class="item-menu">
+                <a href="dashboardContatos.php" class="item-menu">
                     <i class="material-icons tamanho-icon">
                         rate_review
                     </i>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="container-item-menu">
-                <a href="" class="item-menu">
+                <a href="dashboardUsuarios.php" class="item-menu">
                     <i class="material-icons tamanho-icon">
                         perm_identity
                     </i>
@@ -65,7 +65,7 @@
 
         <div class="usuario">
             <span>Bem vindo Laise</span>
-            <a href="" class="item-menu">
+            <a href="index.html" class="item-menu">
                 <i class="material-icons tamanho-icon">
                     logout
                 </i>
