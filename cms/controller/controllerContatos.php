@@ -7,6 +7,9 @@
  * Versão: 1.0
 ***************************************************************/
 
+//Importe do arquivo de configurações do projeto
+require_once('modulo/config.php');
+
  function listarContatos()
  {
     require_once('model/bd/contatos.php');
@@ -27,16 +30,8 @@
          if(deleteContato($id))
             return true;
          else
-            return array (
-               'idErro'   => 1,
-               'mensagem' => 'O banco de dados não pode excluir o registro'
-            );
+            return ERRO_EXCLUIR_BANCO;
       }
       else
-         return array(
-            'idErro'   => 1,
-            'mensagem' => 'Não é possível excluir um registro sem um id válido'
-         );
+         return ERRO_EXCLUIR_ID_INVALIDO;
  }
-
-?>

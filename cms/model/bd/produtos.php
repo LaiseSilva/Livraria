@@ -7,8 +7,10 @@
  * Versão: 1.0
  ***********************************************************************/
  
+ //Importe das configurações do banco
  require_once('conexaoMysql.php');
 
+ //Função de inserir no banco
  function insertProduto($dadosProdutos)
  {
     $statusResposta = (bool) false;
@@ -42,6 +44,3 @@
  function uptadeProduto($dadosProdutos){}
 
  function deleteProduto($id){}
-
-
-?>

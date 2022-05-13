@@ -7,6 +7,8 @@
  * Versão: 1.0
  ***************************************************************/
 
+//Importe do arquivo de configurações do projeto
+require_once('modulo/config.php');
 
 function inserirUsuario($dadosUsuario, $file)
 {
@@ -28,12 +30,12 @@ function inserirUsuario($dadosUsuario, $file)
                'idErro'   => 2,
                'message'  => 'Não foi possível inserir o dado no banco'
             );
-      }
-   } else
-      return array(
-         'idErro'  => 2,
-         'message' => 'O campo obrigatório não foi preenchido!'
-      );
+      } else
+         return array(
+            'idErro'  => 2,
+            'message' => 'O campo obrigatório não foi preenchido!'
+         );
+   }
 }
 
 function listarUsuarios()
@@ -57,15 +59,9 @@ function excluirUsuario($id)
       if (deleteUsuario($id))
          return true;
       else
-         return array(
-            'idErro'   => 1,
-            'mensagem' => 'O banco de dados não pode excluir o registro'
-         );
+         return ERRO_EXCLUIR_BANCO;
    } else
-      return array(
-         'idErro'   => 1,
-         'mensagem' => 'Não é possível excluir um registro sem um id válido'
-      );
+      return ERRO_EXCLUIR_ID_INVALIDO;
 }
 
 function buscarUsuario($id)
@@ -78,10 +74,7 @@ function buscarUsuario($id)
       if (!empty($dados))
          return $dados;
       else
-         return array(
-            'idErro'  => 4,
-            'message' => 'Não é possível buscar um registro sem um id válido'
-         );
+         return ERRO_BUSCAR;
    }
 }
 
@@ -89,30 +82,29 @@ function atualizarUsuario($dadosUsuario, $id)
 {
    if (!empty($dadosUsuario)) {
       if (!empty($dadosUsuario['nome']) && !empty($dadosUsuario['email']) && !empty($dadosUsuario['senha'])) {
-         $arrayDados = array(
-            'id'    => $id,
-            "nome"  => $dadosUsuario['nome'],
-            "email" => $dadosUsuario['email'],
-            "senha" => $dadosUsuario['senha']
-         );
 
-         require_once('model/bd/usuarios.php');
+         if (!empty($id) && is_numeric($id) && $id != 0) {
 
-         if (uptadeUsuario($arrayDados))
-            return true;
-         else
-            return array(
-               'idErro' => 3,
-               'message' => 'Não foi possível atualizar o genero no Banco de dados'
+
+            $arrayDados = array(
+               'id'    => $id,
+               "nome"  => $dadosUsuario['nome'],
+               "email" => $dadosUsuario['email'],
+               "senha" => $dadosUsuario['senha']
             );
+
+            require_once('model/bd/usuarios.php');
+
+            if (uptadeUsuario($arrayDados))
+               return true;
+            else
+               return ERRO_ATUALIZAR_BANCO;
+         } else
+            return ERRO_ATUALIZAR_ID_INVALIDO;
       } else
-         return array(
-            'idErro' => 3,
-            'message' => 'Não é possível atualizar o genero sem um id válido'
-         );
+         return ERRO_CAMPO_OBRIGATORIO;
    } else
-      return array(
-         'idErro'  => 2,
-         'message' => 'O campo obrigatório não foi preenchido!'
-      );
+      return ERRO_NENHUM_CAMPO_PREENCHIDO;
 }
+
+//OBS:verificar o id, esqueci

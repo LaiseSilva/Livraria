@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/dashboard.css">
     <link rel="stylesheet" href="./style/tabelas.css">
+    <link rel="stylesheet" href="./style/forms.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -23,11 +24,11 @@
         <div class="logo"></div>
     </header>
 
-    <nav id="nav">
-        <div class="navegacao">
+    <div id="container">
+        <nav id="menu">
 
-            <div class="container-item-menu">
-                <a href="" class="item-menu">
+            <div class="item-menu">
+                <a href="" class="item">
                     <span class="material-icons tamanho-icon">
                         auto_stories
                     </span>
@@ -35,8 +36,8 @@
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="dashboardGeneros.php" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardGeneros.php" class="item">
                     <span class="material-icons tamanho-icon">
                         category
                     </span>
@@ -44,8 +45,8 @@
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="dashboardContatos.php" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardContatos.php" class="item">
                     <i class="material-icons tamanho-icon">
                         rate_review
                     </i>
@@ -53,76 +54,89 @@
                 </a>
             </div>
 
-            <div class="container-item-menu">
-                <a href="dashboardUsuarios.php" class="item-menu">
+            <div class="item-menu">
+                <a href="dashboardUsuarios.php" class="item">
                     <i class="material-icons tamanho-icon">
                         perm_identity
                     </i>
                     <p>Usuários</p>
                 </a>
             </div>
-        </div>
 
-        <div class="usuario">
-            <span>Bem vindo Laise</span>
-            <a href="index.html" class="item-menu">
-                <i class="material-icons tamanho-icon">
-                    logout
-                </i>
-                <p>Logout</p>
-            </a>
 
-        </div>
-    </nav>
+            <div class="item-menu">
+                <a href="index.html" class="item">
+                    <i class="material-icons tamanho-icon">
+                        logout
+                    </i>
+                    <p>Logout</p>
+                </a>
 
-    <div id="consultaDeMensagens">
-        <table class="tblConsulta">
-            <tr class="tblTitulo">
-                <td class="tblTitulo">
-                    <h1>Mensagens Clientes</h1>
-                </td>
-            </tr>
+            </div>
+        </nav>
 
-            <tr class="tblLinhas">
-                <th class="tblColunas">Nome</th>
-                <th class="tblColunas">Assunto</th>
-            </tr>
-
-            <?php
-            require_once('controller/controllerContatos.php');
-            $listContato = listarContatos();
-
-            foreach ($listContato as $item) {
-
-            ?>
-
-                <tr class="tblLinhas">
-                    <td class="tblRegistro tblColunas"><?= $item['nome'] ?></td>
-                    <td class="tblColunas"><?= $item['assunto'] ?></td>
-                    <td class="tblopcoes">
-                        <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?= $item['id'] ?>">
-                            <img class="icone-excluir" src="./img/excluir.png" alt="">
-                        </a>
-                    </td>
-
-                    <td class="tblopcoes">
-                        <a>
-                            <img class="icone-visualizar" src="./img/visualizador.png" alt="">
-                        </a>
+        <section id="consultaDeDados">
+            <table id="tblConsulta">
+                <tr>
+                    <td id="tblTitulo">
+                        Consulta de Mensagens
                     </td>
                 </tr>
 
+                <tr id="tblLinhas">
+                    <td class="tblColunas destaque">
+                        Email
+                    </td>
+
+                    <td class="tblColunas destaque">
+                        Assunto
+                    </td>
+
+                    <td class="tblColunas destaque">
+                        Ações
+                    </td>
+                </tr>
+
+                <tr id="tblLinhas">
+
+                </tr>
+
+                <?php
+                require_once('controller/controllerContatos.php');
+                $listContato = listarContatos();
+
+                foreach ($listContato as $item) {
+
+                ?>
+
+                    <tr id="tblLinhas">
+                        <td class="tblColunas registros"><?= $item['nome'] ?></td>
+
+                        <td class="tblColunas registros"><?= $item['assunto'] ?></td>
+
+                        <td class="tblColunas registros">
+                            <a onclick="return confirm('Deseja realmente excluir esse dado?');" href="router.php?component=contatos&action=deletar&id=<?= $item['id'] ?>">
+                                <img class="excluir" src="./img/excluir.png" alt="">
+                            </a>
+
+                            <a>
+                                <img class="visualizar" src="./img/visualizador.png" alt="">
+                            </a>
+                        </td>
+                    </tr>
 
 
 
-            <?php
-            }
-            ?>
 
+                <?php
+                }
+                ?>
 
-        </table>
-
+            </table>
+        </section>
     </div>
+
+
 
 </body>
 

@@ -144,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                         window.location.href = 'dashboardUsuarios.php';
                     </script>");
                     } elseif (is_array($resposta)) {
+
                         echo ("<script>
                                     alert('" . $resposta['message'] . "');
                                     window.history.back();
@@ -161,12 +162,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                                     alert('Registro atualizado com sucesso!');
                                     window.location.href = 'dashboardUsuarios.php';                        
                               </script>");
-                    } elseif (is_array($resultado)) {
-                        echo ("<script>
+                    }
+                } elseif (is_array($resultado)) {
+
+
+                    echo ("<script>
                                 alert('" . $resultado["message"] . "');
                                 window.history.back();                        
                            </script>");
-                    }
                 }
             }
             break;
@@ -174,8 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
             if ($action == 'INSERIR') {
             } elseif ($action == 'BUSCAR') {
             } elseif ($action == 'DELETAR') {
-            } elseif ($action == 'EDITAR'){
-                
+            } elseif ($action == 'EDITAR') {
             }
     }
 }

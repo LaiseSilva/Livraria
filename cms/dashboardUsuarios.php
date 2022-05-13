@@ -25,6 +25,7 @@ if (session_status()) {
    <link rel="stylesheet" href="./style/dashboard.css">
    <link rel="stylesheet" href="./style/tabelas.css">
    <link rel="stylesheet" href="./style/forms.css">
+   <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -73,9 +74,11 @@ if (session_status()) {
 
          <div class="item-menu">
             <a href="dashboardUsuarios.php" class="item">
-               <i class="material-icons tamanho-icon">
-                  perm_identity
-               </i>
+
+
+               <span class="material-symbols-outlined tamanho-icon">
+                  group_add
+               </span>
                <p>Usuários</p>
             </a>
          </div>
@@ -149,7 +152,7 @@ if (session_status()) {
                      <td class="tblColunas destaque"> Email</td>
                      <td class="tblColunas destaque"> Ações</td>
                   </tr>
-                
+
                </div>
 
 
@@ -179,7 +182,7 @@ if (session_status()) {
                         </a>
                      </td>
                   </tr>
-                  
+
 
                <?php
                }
