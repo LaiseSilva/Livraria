@@ -117,12 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                                         alert('Registro inserido com sucesso!');
                                         window.location.href = 'dashboardUsuarios.php';
                                   </script>");
-                    elseif (is_array($resultado))
-                        echo ("<script>
-                                        alert('" . $resultado['message'] . "');
-                                        window.history.back();
-                                  </script>");
-                }
+                } elseif (is_array($resultado))
+                    echo ("<script>
+                                alert('" . $resultado['message'] . "');
+                                window.history.back();
+                          </script>");
             } elseif ($action == 'BUSCAR') {
                 $idUsuario = $_GET['id'];
 
@@ -174,7 +173,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
             }
             break;
         case 'PRODUTOS':
+            require_once('controller/controllerProdutos.php');
+
             if ($action == 'INSERIR') {
+                
+                if(isset($_FILES) && !empty($_FILES))
+                {
+                    $resultado = inserirProduto($_POST, $_FILES);
+                }else{
+                    $resultado = inserirProduto($_POST, null);
+                }
+
+                if (is_bool($resultado)) {
+                    if ($resultado)
+                        echo ("<script>
+                                    alert('Registro inserido com sucesso!');
+                                    window.location.href = 'dashboardAdmProdutos.php';
+                              </script>");
+                } elseif (is_array($resultado)) {
+                    echo ("<script>
+                                alert('" . $resultado['message'] . "');
+                                window.history.back();
+                           </script>");
+                }
             } elseif ($action == 'BUSCAR') {
             } elseif ($action == 'DELETAR') {
             } elseif ($action == 'EDITAR') {

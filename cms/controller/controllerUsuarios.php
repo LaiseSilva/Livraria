@@ -26,16 +26,11 @@ function inserirUsuario($dadosUsuario, $file)
          if (insertUsuario($arrayDados))
             return true;
          else
-            return array(
-               'idErro'   => 2,
-               'message'  => 'Não foi possível inserir o dado no banco'
-            );
+            return ERRO_INSERIR_BANCO;
       } else
-         return array(
-            'idErro'  => 2,
-            'message' => 'O campo obrigatório não foi preenchido!'
-         );
-   }
+         return ERRO_CAMPO_OBRIGATORIO;
+   } else
+      return ERRO_OBEJETO_NULL;
 }
 
 function listarUsuarios()
@@ -104,7 +99,5 @@ function atualizarUsuario($dadosUsuario, $id)
       } else
          return ERRO_CAMPO_OBRIGATORIO;
    } else
-      return ERRO_NENHUM_CAMPO_PREENCHIDO;
+      return ERRO_OBEJETO_NULL;
 }
-
-//OBS:verificar o id, esqueci

@@ -25,9 +25,10 @@ function inserirGenero($dadosGeneros)
                 return true;
             else
                 return ERRO_INSERIR_BANCO;
-        }
-    } else
-        return ERRO_CAMPO_OBRIGATORIO;
+        } else
+            return ERRO_CAMPO_OBRIGATORIO;
+    }else
+        return ERRO_OBEJETO_NULL;
 }
 
 function listarGeneros()
@@ -76,7 +77,7 @@ function atualizarGenero($dadosGeneros, $id)
         } else
             return ERRO_CAMPO_OBRIGATORIO;
     } else
-        return ERRO_NENHUM_CAMPO_PREENCHIDO;
+        return ERRO_OBEJETO_NULL;
 }
 
 function buscarGenero($id)

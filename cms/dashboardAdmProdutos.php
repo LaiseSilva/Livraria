@@ -1,3 +1,8 @@
+<?php
+
+   $form = (string) "router.php?component=produtos&action=inserir";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -80,7 +85,7 @@
       </div>
 
       <div class="cadastroInformacoes">
-         <form action="" method="post">
+         <form action="<?=$form?>" method="post">
             <div class="campos">
                <div class="cadastroDados">
                   <label>Nome: </label>
@@ -117,18 +122,18 @@
                </div>
 
                <div class="entradaDeDados">
-                  <input class="input" type="radio" name="destaque" value="Sim"> Sim
-                  <input class="input" type="radio" name="destaque" value="Não" checked> Não
+                  <input class="input" type="radio" name="destaque" value="true" > Sim
+                  <input class="input" type="radio" name="destaque" value="false" checked> Não
                </div>
             </div>
 
             <div class="campos">
                <div class="cadastroDados">
-                  <label>Descrição</label>
+                  <label>Sinopse</label>
                </div>
 
                <div class="entradaDeDados">
-                  <textarea class="input" name="descricao" id="" cols="30" rows="10"></textarea>
+                  <textarea class="input" name="sinopse" id="" cols="30" rows="10"></textarea>
                </div>
             </div>
             

@@ -42,7 +42,7 @@ const ERRO_ATUALIZAR_BANCO = array(
    'message' => 'Não foi possível atualizar no banco'
 );
 
-const ERRO_NENHUM_CAMPO_PREENCHIDO = array(
+const ERRO_OBEJETO_NULL = array(
    'idErro'  => 8,
-   'message' => 'Por favor preencha os campos'
+   'message' => 'O objeto está vazio'
 );
