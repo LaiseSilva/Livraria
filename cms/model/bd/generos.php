@@ -10,7 +10,7 @@
 require_once('conexaoMysql.php');
 
 //Função para puxar todos os usuários do banco
-function selectAllContatos()
+function selectAllGeneros()
 {
     //Abre a conexao com o bd
     $conexao = conexaoMysql();

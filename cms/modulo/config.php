@@ -7,6 +7,7 @@
  * Versão: 1.0   
  *****************************************************************************/
 
+/***** Váriaves de erro *****/
 const ERRO_CAMPO_OBRIGATORIO = array(
    'idErro'  => 1,
    'message' => 'O(s) campo(s) obrigatório(s) não foi(foram) preenchido!'
@@ -46,3 +47,40 @@ const ERRO_OBEJETO_NULL = array(
    'idErro'  => 8,
    'message' => 'O objeto está vazio'
 );
+
+const ERRO_ARQUIVO_PARA_SERVIDOR = array(
+   'idErro'  => 9,
+   'message' => 'Não foi possível mover o arquivo para o servidor'
+);
+
+const ERRO_ARQUIVO_EXT_INVALIDA = array(
+   'idErro'  => 10,
+   'message' => 'A extensão do arquivo selecionado não é permitida no upload.'
+);
+
+const ERRO_ARQUIVO_TAMANHO_INVALIDO = array(
+   'idErro'  => 11,
+   'message' => 'Tamanho de arquivo inválido no upload.'
+);
+
+const ERRO_NENHUM_ARQUIVO_SELECIONADO = array(
+   'idErro'  => 12,
+   'message' => 'Tamanho de arquivo inválido no upload.'
+);
+
+const ERRO_EXCLUIR_FOTO_DIRETORIO_SERVIDOR = array(
+   'idErro'  => 13,
+   'message' => 'O registro do banco de dados foi excluído com sucesso,
+                 porém a imagem não foi excluída do diretório do servidor'
+);
+
+
+
+/***** Váriaveis para auxiliar no upload de arquivos *****/
+
+//Limitação de 5mb
+const MAX_FILE_UPLOAD = 5120;
+
+const EXT_FILE_UPLOAD = array("image/jpg", "image/jpeg", "image/gif", "image/png");
+
+const DIRETORIO_FILE_UPLOAD = "arquivos/";

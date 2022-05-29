@@ -46,7 +46,7 @@ if (session_status()) {
    <div id="container">
       <nav id="menu">
          <div class="item-menu">
-            <a href="" class="item">
+            <a href="dashboardAdmProdutos.php" class="item">
                <span class="material-icons tamanho-icon">
                   auto_stories
                </span>
@@ -74,12 +74,19 @@ if (session_status()) {
 
          <div class="item-menu">
             <a href="dashboardUsuarios.php" class="item">
-
-
                <span class="material-symbols-outlined tamanho-icon">
                   group_add
                </span>
                <p>Usuários</p>
+            </a>
+         </div>
+
+         <div class="item-menu">
+            <a href="produto&genero.php" class="item">
+               <span class="material-symbols-outlined tamanho-icon">
+                  hub
+               </span>
+               <p>Produto&Genero</p>
             </a>
          </div>
 

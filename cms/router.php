@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
             require_once('controller/controllerUsuarios.php');
 
             if ($action == 'INSERIR') {
-                $resultado = inserirUsuario($_POST, null);
+                $resultado = inserirUsuario($_POST, $_FILES);
                 if (is_bool($resultado)) {
 
                     if ($resultado)
@@ -176,11 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
             require_once('controller/controllerProdutos.php');
 
             if ($action == 'INSERIR') {
-                
-                if(isset($_FILES) && !empty($_FILES))
-                {
+                if (isset($_FILES) && !empty($_FILES)) {
                     $resultado = inserirProduto($_POST, $_FILES);
-                }else{
+                } else {
                     $resultado = inserirProduto($_POST, null);
                 }
 
@@ -197,8 +195,132 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET')
                            </script>");
                 }
             } elseif ($action == 'BUSCAR') {
+                $idProduto = $_GET['id'];
+
+                $dados = buscarProduto($idProduto);
+
+                session_start();
+
+                $_SESSION['dadosProdutos'] =  $dados;
+
+                require_once('dashboardAdmProdutos.php');
             } elseif ($action == 'DELETAR') {
+                $idproduto = $_GET['id'];
+                $foto = $_GET['foto'];
+
+                $arrayDados = array(
+                    "id"   => $idproduto,
+                    "foto" => $foto
+                );
+
+                $resposta = excluirProduto($arrayDados);
+
+                if (is_bool($resposta)) {
+                    if ($resposta) {
+                        echo ("<script>
+                                alert('Registro excluído com sucesso!');
+                                window.location.href = 'dashboardAdmProdutos.php';
+                        </script>");
+                    } elseif (is_array($resposta)) {
+
+                        echo ("<script>
+                                    alert('" . $resposta['message'] . "');
+                                    window.history.back();
+                            </script>");
+                    }
+                }
             } elseif ($action == 'EDITAR') {
+                $id = $_GET['id'];
+                $foto = $_GET['foto'];
+
+                $arrayDados = array(
+                    "id"   => $id,
+                    "foto" => $foto,
+                    "files" => $_FILES
+                );
+
+
+                $resultado = atualizarProduto($_POST, $arrayDados);
+
+
+                if (is_bool($resultado)) {
+                    if ($resultado) {
+                        echo ("<script>
+                        alert('Registro atualizado com sucesso!');
+                        window.location.href = 'dashboardAdmProdutos.php';
+                    </script>");
+                    } elseif (is_array($resultado)) {
+
+                        echo ("<script>
+                                    alert('" . $resultado['message'] . "');
+                                    window.history.back();
+                            </script>");
+                    }
+                }
             }
+            break;
+        case 'PRODUTO_GENERO':
+            require_once('controller/controllerProduto_Genero.php');
+
+            if ($action == 'INSERIR') {
+
+                $resultado = inserirProdutoGenero($_POST);
+                if (is_bool($resultado)) {
+                    if ($resultado)
+                        echo ("<script>
+                                    alert('Registro inserido com sucesso!');
+                                    window.location.href = 'produto&genero.php';
+                              </script>");
+                } elseif (is_array($resultado))
+                    echo ("<script>
+                                alert('" . $resultado['message'] . "');
+                                window.history.back();                   
+                         </script>");
+            } elseif ($action == 'DELETAR') {
+                $idProdutoGenero = $_GET['id'];
+                $resposta = excluirProdutoGenero($idProdutoGenero);
+
+                if (is_bool($resposta)) {
+                    if ($resposta) {
+                        echo ("<script>
+                                alert('Registro excluído com sucesso!');
+                                window.location.href = 'produto&genero.php';
+                            </script>");
+                    } elseif (is_array($resposta)) {
+                        echo ("<script>
+                                    alert('" . $resposta['message'] . "');
+                                    window.history.back();
+                            </script>");
+                    }
+                }
+            } elseif ($action == 'BUSCAR') {
+                $idProdutoGenero = $_GET['id'];
+
+                $dados = buscarProdutoGenero($idProdutoGenero);
+
+
+                session_start();
+
+                $_SESSION['dadosProdutoGenero'] = $dados;
+                require_once('produto&genero.php');
+            } elseif ($action == 'EDITAR') {
+                $idProdutoGenero = $_GET['id'];
+
+                $resultado = atualizarProdutoGenero($_POST, $idProdutoGenero);
+
+                if (is_bool($resultado)) {
+                    if ($resultado)
+                        echo ("<script>
+                                    alert('Registro atualizado com sucesso!');
+                                    window.location.href = 'produto&genero.php';                        
+                              </script>");
+                } elseif (is_array($resultado)) {
+                    echo ("<script>
+                                    alert('" . $resultado["message"] . "');
+                                    window.history.back();                        
+                              </script>");
+                }
+            }
+            break;
     }
 }

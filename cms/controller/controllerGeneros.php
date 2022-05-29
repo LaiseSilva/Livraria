@@ -27,7 +27,7 @@ function inserirGenero($dadosGeneros)
                 return ERRO_INSERIR_BANCO;
         } else
             return ERRO_CAMPO_OBRIGATORIO;
-    }else
+    } else
         return ERRO_OBEJETO_NULL;
 }
 
@@ -35,7 +35,7 @@ function listarGeneros()
 {
     require_once('model/bd/generos.php');
 
-    $dados = selectAllContatos();
+    $dados = selectAllGeneros();
 
     if (!empty($dados))
         return $dados;
